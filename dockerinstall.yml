@@ -56,6 +56,5 @@
       name: docker 
  
   - name: deploy my container 
-    include_tasks:
-       name: container.yml 
+    include_tasks: container.yml 
     tags: container  
