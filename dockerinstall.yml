@@ -54,3 +54,8 @@
   - name: install docker module for python 
     pip: 
       name: docker 
+   # delegate_to: 127.0.0.1
+  - name: deploy my container 
+    include_tasks:
+       name: container.yml 
+    tags: container  
