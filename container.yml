@@ -27,8 +27,8 @@
         ports:
           - "81:80"
 - name: Retrive Name of Docker Container
-    shell: "docker ps --format '{% raw %}{{ .Names }}{% endraw %}'"
+  shell: "docker ps --format '{% raw %}{{ .Names }}{% endraw %}'"
     register: Name
  - name: Retreive Ip of Docker Container
-    shell: "docker inspect --format '{%raw %}{{ .NetworkSettings.IPAddress }}{% endraw %}' $(docker ps --format '{% raw %}{{ .Names }}{% endraw %}')"
+  shell: "docker inspect --format '{%raw %}{{ .NetworkSettings.IPAddress }}{% endraw %}' $(docker ps --format '{% raw %}{{ .Names }}{% endraw %}')"
     register: IP
