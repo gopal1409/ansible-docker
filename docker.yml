@@ -10,7 +10,7 @@
   shell: "docker ps --format '{% raw %}{{ .Names }}{% endraw %}'"
   register: Name 
 - name: retrive ip of docker container 
-  shell: "docker inspect --format '{% raw %}{{ .NetworkSettings.IPAddress }}{% endraw %}'$(docker ps --format '{% raw %}{{ .Names }}{% endraw %}')"
+  shell: "docker inspect --format '{% raw %}{{ .NetworkSettings.IPAddress }}{% endraw %}' $(docker ps --format '{% raw %}{{ .Names }}{% endraw %}')"
   register: IP
 - name: creating a file to store inventory
   file: 
@@ -21,8 +21,9 @@
   blockinfile:
     path: container.txt 
     block: |
-      {% raw %}[{% endraw %}{{ Name.stdout }}{% raw %}]{% endraw %}
+      {% raw %}[{% endraw %} {{ Name.stdout }}{% raw %}] {% endraw %}
       {{IP.stdout}} ansible_ssh_user=test ansible_ssh_pass=test 
   delegate_to: 127.0.0.1
+
       
 
