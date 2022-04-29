@@ -17,3 +17,11 @@
     name: container.txt
     state: touch
   delegate_to: 127.0.0.1
+- name: store the inventory
+  blockinfile:
+    path: container.txt 
+    block: |
+      {% raw %}[{% endraw %}{{ Name.stdout }}{% raw %}]{% endraw %}
+      {{IP.stdout}} ansible_ssh_user=test ansible_ssh_pass=test 
+      
+
