@@ -23,5 +23,6 @@
     block: |
       {% raw %}[{% endraw %}{{ Name.stdout }}{% raw %}]{% endraw %}
       {{IP.stdout}} ansible_ssh_user=test ansible_ssh_pass=test 
+  delegate_to: 127.0.0.1
       
 
