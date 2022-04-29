@@ -12,7 +12,8 @@
 - name: retrive ip of docker container 
   shell: "docker inspect --format '{% raw %}{{ .NetworkSettings.IPAddress }}{% endraw %}'$(docker ps --format '{% raw %}{{ .Names }}{% endraw %}')"
   register: IP
-- debug:
-    msg:
-     - Name.stdout
-     - IP.stdout
+- name: creating a file to store inventory
+  file: 
+    name: container.txt
+    state: touch
+  delegate_to: 127.0.0.1
