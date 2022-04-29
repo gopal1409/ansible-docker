@@ -14,5 +14,5 @@
   register: IP
 - debug:
     msg:
-     - Name 
-     - IP
+     - Name.stdout
+     - IP.stdout
