@@ -19,7 +19,7 @@
       state: started
   with_sequence: count={{container_count}}
 - name: deploy nginx docker container
-      docker_container:
+  community.docker.docker_container:
         image: nginx:stable
         name: nginx
         state: started
