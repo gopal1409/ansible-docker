@@ -60,8 +60,8 @@
     pip: 
       name: docker 
  
-  - name: deploy my container 
-    include_tasks: container.yml 
-    tags: container  
+  #- name: deploy my container 
+   # include_tasks: container.yml 
+    #tags: container  
   - name: deploy my container 
     include_tasks: docker.yml
