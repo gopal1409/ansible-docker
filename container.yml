@@ -18,24 +18,3 @@
       #command: "{{default_container_command}}"
       state: started
   with_sequence: count={{container_count}}
-- name: deploy nginx docker container
-  community.docker.docker_container:
-        image: nginx:stable
-        name: nginx
-        state: started
-        auto_remove: true
-        ports:
-          - "81:80"
-- name: Retrive Name of Docker Container
-  shell: "docker ps --format '{% raw %}{{ .Names }}{% endraw %}'"
-  register: Name
-- name: Retreive Ip of Docker Container
-  shell: "docker inspect --format '{%raw %}{{ .NetworkSettings.IPAddress }}{% endraw %}' $(docker ps --format '{% raw %}{{ .Names }}{% endraw %}')"
-  register: IP
-- name: store the inventory
-  blockinfile:
-      path: inventory.txt
-      block: |
-        {% raw %}[{% endraw %}{{ Name.stdout }}{%raw %}]{% endraw %}
-        {{ IP.stdout }} ansible_ssh_user=test ansible_ssh_pass=test
-  delegate_to: 127.0.0.1

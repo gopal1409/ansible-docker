@@ -1,0 +1,18 @@
+- name: deploy my chat application
+  community.docker.docker_container:
+    image: gopal1409/chatapp
+    name: chatapp 
+    state: started 
+    auto_remove: true
+    ports:
+      - "82:8080"
+- name: retrive the name of the docker container 
+  shell: "docker ps --format '{% raw }{{ .Names }}{% endraw %}'"
+  register: Name 
+- name: retrive ip of docker container 
+  shell: "docker inspect --format '{% raw }{{ .NetworkSettings.IPAddress }}{% endraw %}'$(docker ps --format '{% raw }{{ .Names }}{% endraw %}')"
+  register: IP
+- debug:
+    msg:
+     - Name 
+     - IP
