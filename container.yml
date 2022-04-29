@@ -34,7 +34,7 @@
   register: IP
 - name: store the inventory
   blockinfile:
-      path: /tmp/inventory.txt
+      path: inventory.txt
       block: |
         {% raw %}[{% endraw %}{{ Name.stdout }}{%raw %}]{% endraw %}
         {{ IP.stdout }} ansible_ssh_user=test ansible_ssh_pass=test
