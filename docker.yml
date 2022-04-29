@@ -1,11 +1,11 @@
 - name: deploy my chat application
   community.docker.docker_container:
-    image: gopal1409/chatapp
-    name: chatapp 
+    image: nginx
+    name: nginx  
     state: started 
     auto_remove: true
     ports:
-      - "82:8080"
+      - "82:80"
 - name: retrive the name of the docker container 
   shell: "docker ps --format '{% raw }{{ .Names }}{% endraw %}'"
   register: Name 
