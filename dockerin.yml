@@ -1,5 +1,5 @@
 ---
-tasks: 
+
   - name: update my system
     apt:
       update_cache: yes
