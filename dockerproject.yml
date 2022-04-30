@@ -21,8 +21,8 @@
   - name: clone a project from github
     git:
       repo: https://github.com/gopal1409/springtomcatchatapp.git
-      dest: /tmp/spring
+      dest: /root/ansible-docker
     delegate_to: 127.0.0.1
   - name: compile the applciation using maven
-    shell: "mvn clean package /tmp/spring"
+    shell: "mvn clean package"
     delegate_to: 127.0.0.1
