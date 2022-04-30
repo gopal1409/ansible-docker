@@ -74,7 +74,7 @@
       name: gopal1409/chatapp 
     # Will be pushed to localhost:5000/centos:7
       repository: hub.docker.com/gopal1409/chatapp
-      tag: 1
+ 
       push: yes
       source: local
     delegate_to: 127.0.0.1
