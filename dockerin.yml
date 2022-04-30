@@ -73,7 +73,7 @@
     # Image will be centos:7
       name: gopal1409/chatapp 
     # Will be pushed to localhost:5000/centos:7
-      repository: hub.docker.com/gopal1409/chatapp
+      repository: gopal1409/chatapp
  
       push: yes
       source: local
