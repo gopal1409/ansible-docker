@@ -21,7 +21,7 @@
   - name: clone a project from github
     git:
       repo: https://github.com/gopal1409/springtomcatchatapp.git
-      dest: /root/ansible-docker
+      dest: /root/ansible-docker/springboot
       clone: yes
     delegate_to: 127.0.0.1
   - name: compile the applciation using maven
