@@ -1,0 +1,54 @@
+---
+tasks: 
+  - name: update my system
+    apt:
+      update_cache: yes
+    delegate_to: 127.0.0.1
+  - name: install prerequsitis
+    apt:
+      name: 
+        - ca-certificates
+        - curl
+        - gnupg
+        - lsb-release
+      update_cache: yes
+    tags:
+    - dependency
+    delegate_to: 127.0.0.1
+  - name: add docker gpg key 
+    apt_key:
+      url: https://download.docker.com/linux/ubuntu/gpg
+    tags:
+    - gpg 
+    delegate_to: 127.0.0.1
+  - name: add the docker repo 
+    apt_repository:
+      repo: deb https://download.docker.com/linux/ubuntu focal stable
+    tags:
+    - repo 
+    delegate_to: 127.0.0.1
+  - name: install docker 
+    apt:
+      name: 
+        - docker-ce
+        - docker-ce-cli
+        - containerd.io 
+        - docker-compose-plugin
+    tags:
+    - docker 
+    delegate_to: 127.0.0.1
+  - name: add userpermission
+    shell: "usermod -aG docker {{lookup('env','USER')}}"
+    tags:
+    - permission 
+    delegate_to: 127.0.0.1
+  - name: install python package manage
+    apt:
+      name: python3-pip
+    tags: 
+    - python-pip 
+    delegate_to: 127.0.0.1
+  - name: install docker module for python 
+    pip: 
+      name: docker 
+    delegate_to: 127.0.0.1
