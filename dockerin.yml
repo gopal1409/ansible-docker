@@ -52,3 +52,11 @@
     pip: 
       name: docker 
     delegate_to: 127.0.0.1
+  - name: build the image 
+    community.docker.docker_image:
+      name: gopal1409/chatapp 
+      build:
+        path: springboot 
+        source: build 
+      state: present 
+    delegate_to: 127.0.0.1
