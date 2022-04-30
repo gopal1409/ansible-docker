@@ -1,0 +1,28 @@
+---
+- #this minus is required in yaml it indicate list of items. Playbook contains a list of play and every play will be a dictionary
+#host: where you want to run your playbook
+  hosts: jump
+  become: yes
+#vars: variable that will apply to the play
+  vars: #is a keywoad
+    myurl: "https://releases.ansible.com/ansible/ansible-2.9.9.tar.gz"
+    mycrc: "sha256:https://releases.ansible.com/ansible/ansible-2.9.9.tar.gz.sha"
+    mydest: "/tmp/"
+    
+    container_count: 4
+    default_container_name: docker 
+    default_container_image: ubuntu 
+    default_container_command: sleep 1d
+  tasks: 
+  - name: install mvn
+    apt:
+      name: maven
+    delegate_to: 127.0.0.1
+  - name: clone a project from github
+    git:
+      repo: https://github.com/gopal1409/springtomcatchatapp.git
+      dest: /tmp
+    delegate_to: 127.0.0.1
+  - name: compile the applciation using maven
+    shell: "mvn clean package /tmp/springtomcatchatapp"
+    delegate_to: 127.0.0.1
