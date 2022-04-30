@@ -60,3 +60,13 @@
       source: build   
       state: present 
     delegate_to: 127.0.0.1
+  - name: docker login
+    docker_login:
+      username: gopal1409
+      password: Hetal@123
+  - name: docker push to hub 
+    name: gopal1409/chatapp 
+    # Will be pushed to localhost:5000/centos:7
+    repository: hub.docker.com/gopal1409/chatapp 
+    tag: 1
+    push: yes
