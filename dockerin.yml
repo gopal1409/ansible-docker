@@ -56,7 +56,7 @@
     community.docker.docker_image:
       name: gopal1409/chatapp 
       build:
-        path: springboot/
+        path: springboot/dockerfile
         source: build 
       state: present 
     delegate_to: 127.0.0.1
