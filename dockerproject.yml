@@ -22,6 +22,7 @@
     git:
       repo: https://github.com/gopal1409/springtomcatchatapp.git
       dest: /root/ansible-docker
+      force: yes
     delegate_to: 127.0.0.1
   - name: compile the applciation using maven
     shell: "mvn clean package"
