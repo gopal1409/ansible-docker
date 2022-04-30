@@ -25,5 +25,5 @@
       clone: yes
     delegate_to: 127.0.0.1
   - name: compile the applciation using maven
-    shell: "mvn clean package"
+    shell: "mvn clean package /root/ansible-docker/springboot"
     delegate_to: 127.0.0.1
