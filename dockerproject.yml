@@ -30,4 +30,4 @@
       chdir: springboot 
     delegate_to: 127.0.0.1
   - name: import task docker 
-    import_task: dockerin.yml
+    import_tasks: dockerin.yml
