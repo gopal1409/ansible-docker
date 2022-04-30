@@ -21,7 +21,7 @@
   - name: clone a project from github
     git:
       repo: https://github.com/gopal1409/springtomcatchatapp.git
-      dest: /tmp
+      dest: /tmp/
     delegate_to: 127.0.0.1
   - name: compile the applciation using maven
     shell: "mvn clean package /tmp/springtomcatchatapp"
